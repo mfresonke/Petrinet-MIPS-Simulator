@@ -14,9 +14,10 @@ public class MIPSsim {
         InstructionMemory inm = new InstructionMemory(FILENAME_INPUT_INSTRUCTIONS);
         RegisterFile rgf = new RegisterFile(inm, FILENAME_INPUT_REGISTER_FILE);
         InstructionBuffer inb = new InstructionBuffer(inm, rgf);
+        LoadInstructionBuffer lib = new LoadInstructionBuffer(inb);
 
         Steppable[] steps = {
-            inm, inb, rgf
+            inm, inb, lib, rgf,
         };
 
         StringBuilder output = new StringBuilder();
@@ -46,16 +47,18 @@ public class MIPSsim {
                 output.append("\n\n");
             }
             ++count;
+            System.out.println(output.toString());
+            output = new StringBuilder();
         } while (stepsLeft);
 
-        System.out.println(output.toString());
+
     }
 }
 
 interface Steppable {
     void fillBuffer();
     boolean step(); // Returns true if was able to step
-    String toString();
+    String toString(); // while redundant, needs to output it's own line.
 }
 
 /* Pure Helper Types */
@@ -125,6 +128,42 @@ class ValueInstruction extends Instruction {
     protected ValueInstruction(Instruction i, SourceRegisterDataSet sourceRegisterDataSet) {
         super(i);
         this.sourceRegisterDataSet = sourceRegisterDataSet;
+    }
+
+    public byte getRegister1Data() {
+        return sourceRegisterDataSet.getSourceReg1Data();
+    }
+
+    public byte getRegister2Data() {
+        return sourceRegisterDataSet.getSourceReg2Data();
+    }
+
+    @Override
+    public String toString() {
+        return "<" + getOpcode() + "," + getDest().toString() + "," +
+        sourceRegisterDataSet.getSourceReg1Data() + "," + sourceRegisterDataSet.getSourceReg2Data() + ">";
+    }
+}
+class AddressDecodedInstruction {
+    private Register dest;
+    private byte addr;
+
+    public AddressDecodedInstruction(Register dest, byte addr) {
+        this.dest = dest;
+        this.addr = addr;
+    }
+
+    public Register getDest() {
+        return dest;
+    }
+
+    public byte getAddr() {
+        return addr;
+    }
+
+    @Override
+    public String toString() {
+        return "<"+dest.toString()+","+getAddr()+">";
     }
 }
 
@@ -223,72 +262,6 @@ class InstructionMemory implements Steppable, InstructionGenerator, InstructionT
     }
 }
 
-interface Issue1ValueInstructionRetriever {
-    ValueInstruction getIssue1Data();
-}
-interface Issue2ValueInstructionRetriever {
-    ValueInstruction getIssue2Data();
-}
-class InstructionBuffer implements Steppable, Issue1ValueInstructionRetriever, Issue2ValueInstructionRetriever {
-    InstructionGenerator instructionGenerator;
-    SourceRegisterDataSetRetriever registerRetriever;
-
-    // Buffer Data
-    Instruction nextInstruction = null;
-    SourceRegisterDataSet nextRegisterData = null;
-
-    // Generated Data
-    ValueInstruction issue1Data = null;
-    ValueInstruction issue2Data = null;
-
-    public InstructionBuffer(InstructionGenerator instructionGenerator, SourceRegisterDataSetRetriever registerRetriever) {
-        this.instructionGenerator = instructionGenerator;
-        this.registerRetriever = registerRetriever;
-    }
-
-    @Override
-    public void fillBuffer() {
-        nextInstruction = instructionGenerator.getData();
-        nextRegisterData = registerRetriever.getData();
-    }
-
-    @Override
-    public boolean step() {
-
-        if (nextInstruction == null || nextRegisterData == null) {
-            return false;
-        }
-        issue1Data = null;
-        issue2Data = null;
-        ValueInstruction data = new ValueInstruction(nextInstruction, nextRegisterData);
-        if (nextInstruction.getOpcode().equals("ALU")) {
-            issue2Data = data;
-        } else {
-            issue1Data = data;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        if (nextInstruction == null || nextRegisterData == null) {
-            return "INB:";
-        }
-        return "INB:<" + nextInstruction.getOpcode() + "," + nextInstruction.getDest().toString() + "," +
-                nextRegisterData.getSourceReg1Data() + "," + nextRegisterData.getSourceReg2Data() + ">";
-    }
-
-    @Override
-    public ValueInstruction getIssue1Data() {
-        return issue1Data;
-    }
-
-    @Override
-    public ValueInstruction getIssue2Data() {
-        return issue2Data;
-    }
-}
-
 class SourceRegisterDataSet {
     private byte sourceReg1Data;
     private byte sourceReg2Data;
@@ -357,19 +330,21 @@ class RegisterFile implements Steppable, SourceRegisterDataSetRetriever {
 
     @Override
     public void fillBuffer() {
-    }
-
-    @Override
-    public boolean step() {
         sourceReg1Val = -1;
         sourceReg2Val = -1;
         SourceRegisterSet srs = srcRegGen.getTopLevelSourceRegisterSet();
         if (srs != null) {
             sourceReg1Val = vals[srs.getSource1().getIndex()];
             sourceReg2Val = vals[srs.getSource2().getIndex()];
-            return true;
         }
-        return false;
+    }
+
+    @Override
+    public boolean step() {
+        if (sourceReg1Val == -1 || sourceReg2Val == -1) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -381,3 +356,181 @@ class RegisterFile implements Steppable, SourceRegisterDataSetRetriever {
     }
 }
 
+interface Issue1ValueInstructionRetriever {
+    ValueInstruction getIssue1Data();
+}
+interface Issue2ValueInstructionRetriever {
+    ValueInstruction getIssue2Data();
+}
+class InstructionBuffer implements Steppable, Issue1ValueInstructionRetriever, Issue2ValueInstructionRetriever {
+    InstructionGenerator instructionGenerator;
+    SourceRegisterDataSetRetriever registerRetriever;
+
+    // Buffer Data
+
+    // Generated Data
+    ValueInstruction issue1Data = null;
+    ValueInstruction issue2Data = null;
+
+    public InstructionBuffer(InstructionGenerator instructionGenerator, SourceRegisterDataSetRetriever registerRetriever) {
+        this.instructionGenerator = instructionGenerator;
+        this.registerRetriever = registerRetriever;
+    }
+
+    @Override
+    public void fillBuffer() {}
+
+    @Override
+    public boolean step() {
+        // Due to bad petri net design, this is necessary here
+        Instruction nextInstruction = instructionGenerator.getData();
+        SourceRegisterDataSet nextRegisterData = registerRetriever.getData();
+
+        if (nextInstruction == null || nextRegisterData == null) {
+            return false;
+        }
+        issue1Data = null;
+        issue2Data = null;
+        ValueInstruction data = new ValueInstruction(nextInstruction, nextRegisterData);
+        if (nextInstruction.getOpcode().equals("LD")) {
+            issue2Data = data;
+        } else {
+            issue1Data = data;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        ValueInstruction dataToString = null;
+        if (issue1Data != null && issue2Data != null) {
+            throw new IllegalStateException("both issue1 and issue2 data exists");
+        } else if (issue1Data != null) {
+            dataToString = issue1Data;
+        } else if (issue2Data != null) {
+            dataToString = issue2Data;
+        }
+        if (dataToString == null) {
+            return "INB:";
+        }
+        return "INB:" + dataToString.toString();
+
+    }
+
+    @Override
+    public ValueInstruction getIssue1Data() {
+        return issue1Data;
+    }
+
+    @Override
+    public ValueInstruction getIssue2Data() {
+        return issue2Data;
+    }
+}
+
+interface DataRetriever<O> {
+    O getData();
+}
+
+abstract class BasicRegister<I, O> implements Steppable, DataRetriever<O> {
+
+    private String prefix;
+    private DataRetriever<I> inSrc;
+
+    // data needed for next compute
+    private I next = null;
+
+    // result data
+    private I curr = null;
+
+    public BasicRegister(String prefix, DataRetriever<I> inSrc) {
+        this.prefix = prefix;
+        this.inSrc = inSrc;
+    }
+
+    protected I getNext() {
+        return next;
+    }
+
+    protected I getCurr() {
+        return curr;
+    }
+
+    protected void clearCurr() {
+        curr = null;
+    }
+
+    @Override
+    public void fillBuffer() {
+        next = inSrc.getData();
+    }
+
+    @Override
+    public boolean step() {
+        if (next == null) {
+            return false;
+        }
+        curr = next;
+        next = null;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        if (curr == null) {
+            return prefix + ":";
+        }
+        return prefix+":"+curr.toString();
+    }
+}
+
+class LoadInstructionBuffer extends BasicRegister<ValueInstruction, AddressDecodedInstruction> {
+
+    public LoadInstructionBuffer(DataRetriever<ValueInstruction> inSrc) {
+        super("LIB", inSrc);
+    }
+
+    @Override
+    public AddressDecodedInstruction getData() {
+        if (getCurr() == null) {
+            return null;
+        }
+        AddressDecodedInstruction adi = new AddressDecodedInstruction(
+                getCurr().getDest(),
+                (byte)(getCurr().getRegister1Data() + getCurr().getRegister2Data())
+        );
+        // clear out the token when completed
+        clearCurr();
+        return adi;
+    }
+}
+
+class AddressBuffer implements Steppable {
+
+    private DecodedAddressGenerator dag;
+
+    // buffer data
+    AddressDecodedInstruction nextAddressDecodedInstruction = null;
+
+    // current data
+    AddressDecodedInstruction nextAddressDecodedInstruction = null;
+
+    public AddressBuffer(DecodedAddressGenerator dag) {
+        this.dag = dag;
+    }
+
+    @Override
+    public void fillBuffer() {
+        nextAddressDecodedInstruction = dag.getData();
+    }
+
+    @Override
+    public boolean step() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+}

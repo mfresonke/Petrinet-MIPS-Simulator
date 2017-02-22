@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c38fccb-3ec4-4471-9f67-8e3ab144ffde" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java" afterPath="$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java" />
     </list>
     <ignored path="intellij-project.iws" />
@@ -27,24 +26,56 @@
       <file leaf-file-name="MIPSsim.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="371" column="21" selection-start-line="371" selection-start-column="21" selection-end-line="371" selection-end-column="21" />
+            <state relative-caret-position="-199">
+              <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#Register#0" expanded="false" />
                 <element signature="method#fromString#0;class#Register#0" expanded="false" />
                 <element signature="class#Instruction#0" expanded="false" />
+                <element signature="e#3594#3595#0" expanded="true" />
+                <element signature="e#3658#3659#0" expanded="true" />
+                <element signature="e#3696#3697#0" expanded="true" />
+                <element signature="e#3760#3761#0" expanded="true" />
+                <element signature="e#4232#4233#0" expanded="true" />
+                <element signature="e#4259#4260#0" expanded="true" />
+                <element signature="e#4288#4289#0" expanded="true" />
+                <element signature="e#4315#4316#0" expanded="true" />
+                <element signature="e#4361#4362#0" expanded="true" />
+                <element signature="e#4421#4422#0" expanded="true" />
                 <element signature="class#InstructionGenerator#0" expanded="false" />
                 <element signature="class#SourceRegisterSet#0" expanded="false" />
+                <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
                 <element signature="class#InstructionMemory#0" expanded="false" />
                 <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+                <element signature="class#SourceRegisterDataSet#0" expanded="false" />
+                <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
+                <element signature="class#RegisterFile#0" expanded="false" />
+                <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
                 <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
                 <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
                 <element signature="class#InstructionBuffer#0" expanded="false" />
-                <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-                <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-                <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-                <element signature="method#toString#0;class#RegisterFile#0" expanded="false" />
+                <element signature="e#12191#12192#0" expanded="true" />
+                <element signature="e#12224#12225#0" expanded="true" />
+                <element signature="e#12687#12688#0" expanded="true" />
+                <element signature="e#12714#12715#0" expanded="true" />
+                <element signature="e#12743#12744#0" expanded="true" />
+                <element signature="e#12770#12771#0" expanded="true" />
+                <element signature="e#12804#12805#0" expanded="true" />
+                <element signature="e#12831#12832#0" expanded="true" />
+                <element signature="e#12877#12878#0" expanded="true" />
+                <element signature="e#12915#12916#0" expanded="true" />
+                <element signature="e#13432#13433#0" expanded="true" />
+                <element signature="e#13467#13468#0" expanded="true" />
+                <element signature="e#14217#14218#0" expanded="true" />
+                <element signature="e#14247#14248#0" expanded="true" />
+                <element signature="e#14293#14294#0" expanded="true" />
+                <element signature="e#14354#14355#0" expanded="true" />
+                <element signature="e#14397#14398#0" expanded="true" />
+                <element signature="e#14425#14426#0" expanded="true" />
+                <element signature="e#14471#14472#0" expanded="true" />
+                <element signature="e#14510#14511#0" expanded="true" />
+                <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -381,11 +412,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27210885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -397,7 +429,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39909297" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -418,7 +449,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -436,17 +467,49 @@
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3658#3659#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3760#3761#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4288#4289#0" expanded="true" />
+            <element signature="e#4315#4316#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4421#4422#0" expanded="true" />
             <element signature="class#InstructionGenerator#0" expanded="false" />
             <element signature="class#SourceRegisterSet#0" expanded="false" />
+            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
             <element signature="class#InstructionMemory#0" expanded="false" />
             <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
+            <element signature="class#RegisterFile#0" expanded="false" />
+            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
             <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="method#toString#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="true" />
+            <element signature="e#12224#12225#0" expanded="true" />
+            <element signature="e#12687#12688#0" expanded="true" />
+            <element signature="e#12714#12715#0" expanded="true" />
+            <element signature="e#12743#12744#0" expanded="true" />
+            <element signature="e#12770#12771#0" expanded="true" />
+            <element signature="e#12804#12805#0" expanded="true" />
+            <element signature="e#12831#12832#0" expanded="true" />
+            <element signature="e#12877#12878#0" expanded="true" />
+            <element signature="e#12915#12916#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13467#13468#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14247#14248#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14354#14355#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14425#14426#0" expanded="true" />
+            <element signature="e#14471#14472#0" expanded="true" />
+            <element signature="e#14510#14511#0" expanded="true" />
+            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -460,17 +523,49 @@
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3658#3659#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3760#3761#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4288#4289#0" expanded="true" />
+            <element signature="e#4315#4316#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4421#4422#0" expanded="true" />
             <element signature="class#InstructionGenerator#0" expanded="false" />
             <element signature="class#SourceRegisterSet#0" expanded="false" />
+            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
             <element signature="class#InstructionMemory#0" expanded="false" />
             <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
+            <element signature="class#RegisterFile#0" expanded="false" />
+            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
             <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="method#toString#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="true" />
+            <element signature="e#12224#12225#0" expanded="true" />
+            <element signature="e#12687#12688#0" expanded="true" />
+            <element signature="e#12714#12715#0" expanded="true" />
+            <element signature="e#12743#12744#0" expanded="true" />
+            <element signature="e#12770#12771#0" expanded="true" />
+            <element signature="e#12804#12805#0" expanded="true" />
+            <element signature="e#12831#12832#0" expanded="true" />
+            <element signature="e#12877#12878#0" expanded="true" />
+            <element signature="e#12915#12916#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13467#13468#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14247#14248#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14354#14355#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14425#14426#0" expanded="true" />
+            <element signature="e#14471#14472#0" expanded="true" />
+            <element signature="e#14510#14511#0" expanded="true" />
+            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -484,41 +579,105 @@
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3658#3659#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3760#3761#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4288#4289#0" expanded="true" />
+            <element signature="e#4315#4316#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4421#4422#0" expanded="true" />
             <element signature="class#InstructionGenerator#0" expanded="false" />
             <element signature="class#SourceRegisterSet#0" expanded="false" />
+            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
             <element signature="class#InstructionMemory#0" expanded="false" />
             <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
+            <element signature="class#RegisterFile#0" expanded="false" />
+            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
             <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="method#toString#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="true" />
+            <element signature="e#12224#12225#0" expanded="true" />
+            <element signature="e#12687#12688#0" expanded="true" />
+            <element signature="e#12714#12715#0" expanded="true" />
+            <element signature="e#12743#12744#0" expanded="true" />
+            <element signature="e#12770#12771#0" expanded="true" />
+            <element signature="e#12804#12805#0" expanded="true" />
+            <element signature="e#12831#12832#0" expanded="true" />
+            <element signature="e#12877#12878#0" expanded="true" />
+            <element signature="e#12915#12916#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13467#13468#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14247#14248#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14354#14355#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14425#14426#0" expanded="true" />
+            <element signature="e#14471#14472#0" expanded="true" />
+            <element signature="e#14510#14511#0" expanded="true" />
+            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="371" column="21" selection-start-line="371" selection-start-column="21" selection-end-line="371" selection-end-column="21" />
+        <state relative-caret-position="-199">
+          <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3658#3659#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3760#3761#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4288#4289#0" expanded="true" />
+            <element signature="e#4315#4316#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4421#4422#0" expanded="true" />
             <element signature="class#InstructionGenerator#0" expanded="false" />
             <element signature="class#SourceRegisterSet#0" expanded="false" />
+            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
             <element signature="class#InstructionMemory#0" expanded="false" />
             <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
+            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
+            <element signature="class#RegisterFile#0" expanded="false" />
+            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
             <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
             <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="method#toString#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="true" />
+            <element signature="e#12224#12225#0" expanded="true" />
+            <element signature="e#12687#12688#0" expanded="true" />
+            <element signature="e#12714#12715#0" expanded="true" />
+            <element signature="e#12743#12744#0" expanded="true" />
+            <element signature="e#12770#12771#0" expanded="true" />
+            <element signature="e#12804#12805#0" expanded="true" />
+            <element signature="e#12831#12832#0" expanded="true" />
+            <element signature="e#12877#12878#0" expanded="true" />
+            <element signature="e#12915#12916#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13467#13468#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14247#14248#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14354#14355#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14425#14426#0" expanded="true" />
+            <element signature="e#14471#14472#0" expanded="true" />
+            <element signature="e#14510#14511#0" expanded="true" />
+            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
           </folding>
         </state>
       </provider>
