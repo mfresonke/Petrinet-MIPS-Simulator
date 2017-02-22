@@ -26,56 +26,59 @@
       <file leaf-file-name="MIPSsim.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-199">
-              <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="409" column="18" selection-start-line="409" selection-start-column="18" selection-end-line="409" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#OutputLiner#0" expanded="false" />
+                <element signature="class#Steppable#0" expanded="false" />
+                <element signature="class#DataRetriever#0" expanded="false" />
                 <element signature="class#Register#0" expanded="false" />
                 <element signature="method#fromString#0;class#Register#0" expanded="false" />
                 <element signature="class#Instruction#0" expanded="false" />
-                <element signature="e#3594#3595#0" expanded="true" />
-                <element signature="e#3658#3659#0" expanded="true" />
-                <element signature="e#3696#3697#0" expanded="true" />
-                <element signature="e#3760#3761#0" expanded="true" />
-                <element signature="e#4232#4233#0" expanded="true" />
-                <element signature="e#4259#4260#0" expanded="true" />
-                <element signature="e#4288#4289#0" expanded="true" />
-                <element signature="e#4315#4316#0" expanded="true" />
-                <element signature="e#4361#4362#0" expanded="true" />
-                <element signature="e#4421#4422#0" expanded="true" />
-                <element signature="class#InstructionGenerator#0" expanded="false" />
-                <element signature="class#SourceRegisterSet#0" expanded="false" />
-                <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
-                <element signature="class#InstructionMemory#0" expanded="false" />
-                <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+                <element signature="class#ValueInstruction#0" expanded="false" />
+                <element signature="e#4075#4076#0" expanded="true" />
+                <element signature="e#4139#4140#0" expanded="true" />
+                <element signature="e#4177#4178#0" expanded="true" />
+                <element signature="e#4241#4242#0" expanded="true" />
+                <element signature="e#4713#4714#0" expanded="true" />
+                <element signature="e#4740#4741#0" expanded="true" />
+                <element signature="e#4769#4770#0" expanded="true" />
+                <element signature="e#4796#4797#0" expanded="true" />
+                <element signature="e#4842#4843#0" expanded="true" />
+                <element signature="e#4902#4903#0" expanded="true" />
+                <element signature="class#IntermediateResult#0" expanded="false" />
+                <element signature="e#5135#5136#0" expanded="true" />
+                <element signature="e#5162#5163#0" expanded="true" />
+                <element signature="e#5192#5193#0" expanded="true" />
+                <element signature="e#5220#5221#0" expanded="true" />
+                <element signature="e#5266#5267#0" expanded="true" />
+                <element signature="e#5322#5323#0" expanded="true" />
                 <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-                <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-                <element signature="class#RegisterFile#0" expanded="false" />
-                <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-                <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
-                <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
-                <element signature="class#InstructionBuffer#0" expanded="false" />
-                <element signature="e#12191#12192#0" expanded="true" />
-                <element signature="e#12224#12225#0" expanded="true" />
-                <element signature="e#12687#12688#0" expanded="true" />
-                <element signature="e#12714#12715#0" expanded="true" />
-                <element signature="e#12743#12744#0" expanded="true" />
-                <element signature="e#12770#12771#0" expanded="true" />
-                <element signature="e#12804#12805#0" expanded="true" />
-                <element signature="e#12831#12832#0" expanded="true" />
-                <element signature="e#12877#12878#0" expanded="true" />
-                <element signature="e#12915#12916#0" expanded="true" />
-                <element signature="e#13432#13433#0" expanded="true" />
-                <element signature="e#13467#13468#0" expanded="true" />
-                <element signature="e#14217#14218#0" expanded="true" />
-                <element signature="e#14247#14248#0" expanded="true" />
-                <element signature="e#14293#14294#0" expanded="true" />
-                <element signature="e#14354#14355#0" expanded="true" />
-                <element signature="e#14397#14398#0" expanded="true" />
-                <element signature="e#14425#14426#0" expanded="true" />
-                <element signature="e#14471#14472#0" expanded="true" />
-                <element signature="e#14510#14511#0" expanded="true" />
-                <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
+                <element signature="class#DataMemoryRetriever#0" expanded="false" />
+                <element signature="class#DataMemory#0" expanded="false" />
+                <element signature="e#7346#7347#0" expanded="true" />
+                <element signature="e#7381#7382#0" expanded="true" />
+                <element signature="class#BasicRegister#0" expanded="false" />
+                <element signature="e#7818#7819#0" expanded="true" />
+                <element signature="e#7845#7846#0" expanded="true" />
+                <element signature="e#7874#7875#0" expanded="true" />
+                <element signature="e#7901#7902#0" expanded="true" />
+                <element signature="e#7935#7936#0" expanded="true" />
+                <element signature="e#7962#7963#0" expanded="true" />
+                <element signature="e#8008#8009#0" expanded="true" />
+                <element signature="e#8046#8047#0" expanded="true" />
+                <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+                <element signature="method#getOutputLine#0;class#RegisterFile#0" expanded="false" />
+                <element signature="e#14709#14710#0" expanded="true" />
+                <element signature="e#14758#14759#0" expanded="true" />
+                <element signature="e#14971#14972#0" expanded="true" />
+                <element signature="e#15020#15021#0" expanded="true" />
+                <element signature="class#LoadInstructionBuffer#0" expanded="false" />
+                <element signature="e#15212#15213#0" expanded="true" />
+                <element signature="e#15247#15248#0" expanded="true" />
+                <element signature="class#AddressBuffer#0" expanded="false" />
+                <marker date="1487807415000" expanded="false" signature="4506:4905" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -464,52 +467,55 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#OutputLiner#0" expanded="false" />
+            <element signature="class#Steppable#0" expanded="false" />
+            <element signature="class#DataRetriever#0" expanded="false" />
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
-            <element signature="e#3594#3595#0" expanded="true" />
-            <element signature="e#3658#3659#0" expanded="true" />
-            <element signature="e#3696#3697#0" expanded="true" />
-            <element signature="e#3760#3761#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4288#4289#0" expanded="true" />
-            <element signature="e#4315#4316#0" expanded="true" />
-            <element signature="e#4361#4362#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="class#InstructionGenerator#0" expanded="false" />
-            <element signature="class#SourceRegisterSet#0" expanded="false" />
-            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
-            <element signature="class#InstructionMemory#0" expanded="false" />
-            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#ValueInstruction#0" expanded="false" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4177#4178#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#4713#4714#0" expanded="true" />
+            <element signature="e#4740#4741#0" expanded="true" />
+            <element signature="e#4769#4770#0" expanded="true" />
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#4902#4903#0" expanded="true" />
+            <element signature="class#IntermediateResult#0" expanded="false" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#5162#5163#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
+            <element signature="e#5220#5221#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5322#5323#0" expanded="true" />
             <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="class#RegisterFile#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12224#12225#0" expanded="true" />
-            <element signature="e#12687#12688#0" expanded="true" />
-            <element signature="e#12714#12715#0" expanded="true" />
-            <element signature="e#12743#12744#0" expanded="true" />
-            <element signature="e#12770#12771#0" expanded="true" />
-            <element signature="e#12804#12805#0" expanded="true" />
-            <element signature="e#12831#12832#0" expanded="true" />
-            <element signature="e#12877#12878#0" expanded="true" />
-            <element signature="e#12915#12916#0" expanded="true" />
-            <element signature="e#13432#13433#0" expanded="true" />
-            <element signature="e#13467#13468#0" expanded="true" />
-            <element signature="e#14217#14218#0" expanded="true" />
-            <element signature="e#14247#14248#0" expanded="true" />
-            <element signature="e#14293#14294#0" expanded="true" />
-            <element signature="e#14354#14355#0" expanded="true" />
-            <element signature="e#14397#14398#0" expanded="true" />
-            <element signature="e#14425#14426#0" expanded="true" />
-            <element signature="e#14471#14472#0" expanded="true" />
-            <element signature="e#14510#14511#0" expanded="true" />
-            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
+            <element signature="class#DataMemoryRetriever#0" expanded="false" />
+            <element signature="class#DataMemory#0" expanded="false" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7381#7382#0" expanded="true" />
+            <element signature="class#BasicRegister#0" expanded="false" />
+            <element signature="e#7818#7819#0" expanded="true" />
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7874#7875#0" expanded="true" />
+            <element signature="e#7901#7902#0" expanded="true" />
+            <element signature="e#7935#7936#0" expanded="true" />
+            <element signature="e#7962#7963#0" expanded="true" />
+            <element signature="e#8008#8009#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="method#getOutputLine#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#14709#14710#0" expanded="true" />
+            <element signature="e#14758#14759#0" expanded="true" />
+            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#15020#15021#0" expanded="true" />
+            <element signature="class#LoadInstructionBuffer#0" expanded="false" />
+            <element signature="e#15212#15213#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="class#AddressBuffer#0" expanded="false" />
+            <marker date="1487807415000" expanded="false" signature="4506:4905" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -520,52 +526,55 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#OutputLiner#0" expanded="false" />
+            <element signature="class#Steppable#0" expanded="false" />
+            <element signature="class#DataRetriever#0" expanded="false" />
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
-            <element signature="e#3594#3595#0" expanded="true" />
-            <element signature="e#3658#3659#0" expanded="true" />
-            <element signature="e#3696#3697#0" expanded="true" />
-            <element signature="e#3760#3761#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4288#4289#0" expanded="true" />
-            <element signature="e#4315#4316#0" expanded="true" />
-            <element signature="e#4361#4362#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="class#InstructionGenerator#0" expanded="false" />
-            <element signature="class#SourceRegisterSet#0" expanded="false" />
-            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
-            <element signature="class#InstructionMemory#0" expanded="false" />
-            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#ValueInstruction#0" expanded="false" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4177#4178#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#4713#4714#0" expanded="true" />
+            <element signature="e#4740#4741#0" expanded="true" />
+            <element signature="e#4769#4770#0" expanded="true" />
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#4902#4903#0" expanded="true" />
+            <element signature="class#IntermediateResult#0" expanded="false" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#5162#5163#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
+            <element signature="e#5220#5221#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5322#5323#0" expanded="true" />
             <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="class#RegisterFile#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12224#12225#0" expanded="true" />
-            <element signature="e#12687#12688#0" expanded="true" />
-            <element signature="e#12714#12715#0" expanded="true" />
-            <element signature="e#12743#12744#0" expanded="true" />
-            <element signature="e#12770#12771#0" expanded="true" />
-            <element signature="e#12804#12805#0" expanded="true" />
-            <element signature="e#12831#12832#0" expanded="true" />
-            <element signature="e#12877#12878#0" expanded="true" />
-            <element signature="e#12915#12916#0" expanded="true" />
-            <element signature="e#13432#13433#0" expanded="true" />
-            <element signature="e#13467#13468#0" expanded="true" />
-            <element signature="e#14217#14218#0" expanded="true" />
-            <element signature="e#14247#14248#0" expanded="true" />
-            <element signature="e#14293#14294#0" expanded="true" />
-            <element signature="e#14354#14355#0" expanded="true" />
-            <element signature="e#14397#14398#0" expanded="true" />
-            <element signature="e#14425#14426#0" expanded="true" />
-            <element signature="e#14471#14472#0" expanded="true" />
-            <element signature="e#14510#14511#0" expanded="true" />
-            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
+            <element signature="class#DataMemoryRetriever#0" expanded="false" />
+            <element signature="class#DataMemory#0" expanded="false" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7381#7382#0" expanded="true" />
+            <element signature="class#BasicRegister#0" expanded="false" />
+            <element signature="e#7818#7819#0" expanded="true" />
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7874#7875#0" expanded="true" />
+            <element signature="e#7901#7902#0" expanded="true" />
+            <element signature="e#7935#7936#0" expanded="true" />
+            <element signature="e#7962#7963#0" expanded="true" />
+            <element signature="e#8008#8009#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="method#getOutputLine#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#14709#14710#0" expanded="true" />
+            <element signature="e#14758#14759#0" expanded="true" />
+            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#15020#15021#0" expanded="true" />
+            <element signature="class#LoadInstructionBuffer#0" expanded="false" />
+            <element signature="e#15212#15213#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="class#AddressBuffer#0" expanded="false" />
+            <marker date="1487807415000" expanded="false" signature="4506:4905" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -576,108 +585,114 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#OutputLiner#0" expanded="false" />
+            <element signature="class#Steppable#0" expanded="false" />
+            <element signature="class#DataRetriever#0" expanded="false" />
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
-            <element signature="e#3594#3595#0" expanded="true" />
-            <element signature="e#3658#3659#0" expanded="true" />
-            <element signature="e#3696#3697#0" expanded="true" />
-            <element signature="e#3760#3761#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4288#4289#0" expanded="true" />
-            <element signature="e#4315#4316#0" expanded="true" />
-            <element signature="e#4361#4362#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="class#InstructionGenerator#0" expanded="false" />
-            <element signature="class#SourceRegisterSet#0" expanded="false" />
-            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
-            <element signature="class#InstructionMemory#0" expanded="false" />
-            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#ValueInstruction#0" expanded="false" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4177#4178#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#4713#4714#0" expanded="true" />
+            <element signature="e#4740#4741#0" expanded="true" />
+            <element signature="e#4769#4770#0" expanded="true" />
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#4902#4903#0" expanded="true" />
+            <element signature="class#IntermediateResult#0" expanded="false" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#5162#5163#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
+            <element signature="e#5220#5221#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5322#5323#0" expanded="true" />
             <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="class#RegisterFile#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12224#12225#0" expanded="true" />
-            <element signature="e#12687#12688#0" expanded="true" />
-            <element signature="e#12714#12715#0" expanded="true" />
-            <element signature="e#12743#12744#0" expanded="true" />
-            <element signature="e#12770#12771#0" expanded="true" />
-            <element signature="e#12804#12805#0" expanded="true" />
-            <element signature="e#12831#12832#0" expanded="true" />
-            <element signature="e#12877#12878#0" expanded="true" />
-            <element signature="e#12915#12916#0" expanded="true" />
-            <element signature="e#13432#13433#0" expanded="true" />
-            <element signature="e#13467#13468#0" expanded="true" />
-            <element signature="e#14217#14218#0" expanded="true" />
-            <element signature="e#14247#14248#0" expanded="true" />
-            <element signature="e#14293#14294#0" expanded="true" />
-            <element signature="e#14354#14355#0" expanded="true" />
-            <element signature="e#14397#14398#0" expanded="true" />
-            <element signature="e#14425#14426#0" expanded="true" />
-            <element signature="e#14471#14472#0" expanded="true" />
-            <element signature="e#14510#14511#0" expanded="true" />
-            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
+            <element signature="class#DataMemoryRetriever#0" expanded="false" />
+            <element signature="class#DataMemory#0" expanded="false" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7381#7382#0" expanded="true" />
+            <element signature="class#BasicRegister#0" expanded="false" />
+            <element signature="e#7818#7819#0" expanded="true" />
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7874#7875#0" expanded="true" />
+            <element signature="e#7901#7902#0" expanded="true" />
+            <element signature="e#7935#7936#0" expanded="true" />
+            <element signature="e#7962#7963#0" expanded="true" />
+            <element signature="e#8008#8009#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="method#getOutputLine#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#14709#14710#0" expanded="true" />
+            <element signature="e#14758#14759#0" expanded="true" />
+            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#15020#15021#0" expanded="true" />
+            <element signature="class#LoadInstructionBuffer#0" expanded="false" />
+            <element signature="e#15212#15213#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="class#AddressBuffer#0" expanded="false" />
+            <marker date="1487807415000" expanded="false" signature="4506:4905" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maxfresonke/cda4630/MIPSsim.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-199">
-          <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="409" column="18" selection-start-line="409" selection-start-column="18" selection-end-line="409" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#OutputLiner#0" expanded="false" />
+            <element signature="class#Steppable#0" expanded="false" />
+            <element signature="class#DataRetriever#0" expanded="false" />
             <element signature="class#Register#0" expanded="false" />
             <element signature="method#fromString#0;class#Register#0" expanded="false" />
             <element signature="class#Instruction#0" expanded="false" />
-            <element signature="e#3594#3595#0" expanded="true" />
-            <element signature="e#3658#3659#0" expanded="true" />
-            <element signature="e#3696#3697#0" expanded="true" />
-            <element signature="e#3760#3761#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4288#4289#0" expanded="true" />
-            <element signature="e#4315#4316#0" expanded="true" />
-            <element signature="e#4361#4362#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="class#InstructionGenerator#0" expanded="false" />
-            <element signature="class#SourceRegisterSet#0" expanded="false" />
-            <element signature="class#InstructionTopLevelSourceRegisterSetGenerator#0" expanded="false" />
-            <element signature="class#InstructionMemory#0" expanded="false" />
-            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="class#ValueInstruction#0" expanded="false" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4177#4178#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#4713#4714#0" expanded="true" />
+            <element signature="e#4740#4741#0" expanded="true" />
+            <element signature="e#4769#4770#0" expanded="true" />
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#4902#4903#0" expanded="true" />
+            <element signature="class#IntermediateResult#0" expanded="false" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#5162#5163#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
+            <element signature="e#5220#5221#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5322#5323#0" expanded="true" />
             <element signature="class#SourceRegisterDataSet#0" expanded="false" />
-            <element signature="class#SourceRegisterDataSetRetriever#0" expanded="false" />
-            <element signature="class#RegisterFile#0" expanded="false" />
-            <element signature="method#RegisterFile#0;class#RegisterFile#0" expanded="false" />
-            <element signature="class#Issue1ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#Issue2ValueInstructionRetriever#0" expanded="false" />
-            <element signature="class#InstructionBuffer#0" expanded="false" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12224#12225#0" expanded="true" />
-            <element signature="e#12687#12688#0" expanded="true" />
-            <element signature="e#12714#12715#0" expanded="true" />
-            <element signature="e#12743#12744#0" expanded="true" />
-            <element signature="e#12770#12771#0" expanded="true" />
-            <element signature="e#12804#12805#0" expanded="true" />
-            <element signature="e#12831#12832#0" expanded="true" />
-            <element signature="e#12877#12878#0" expanded="true" />
-            <element signature="e#12915#12916#0" expanded="true" />
-            <element signature="e#13432#13433#0" expanded="true" />
-            <element signature="e#13467#13468#0" expanded="true" />
-            <element signature="e#14217#14218#0" expanded="true" />
-            <element signature="e#14247#14248#0" expanded="true" />
-            <element signature="e#14293#14294#0" expanded="true" />
-            <element signature="e#14354#14355#0" expanded="true" />
-            <element signature="e#14397#14398#0" expanded="true" />
-            <element signature="e#14425#14426#0" expanded="true" />
-            <element signature="e#14471#14472#0" expanded="true" />
-            <element signature="e#14510#14511#0" expanded="true" />
-            <marker date="1487796510000" expanded="false" signature="4025:4424" ph="{...}" />
+            <element signature="class#DataMemoryRetriever#0" expanded="false" />
+            <element signature="class#DataMemory#0" expanded="false" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7381#7382#0" expanded="true" />
+            <element signature="class#BasicRegister#0" expanded="false" />
+            <element signature="e#7818#7819#0" expanded="true" />
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7874#7875#0" expanded="true" />
+            <element signature="e#7901#7902#0" expanded="true" />
+            <element signature="e#7935#7936#0" expanded="true" />
+            <element signature="e#7962#7963#0" expanded="true" />
+            <element signature="e#8008#8009#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="method#InstructionMemory#0;class#InstructionMemory#0" expanded="false" />
+            <element signature="method#getOutputLine#0;class#RegisterFile#0" expanded="false" />
+            <element signature="e#14709#14710#0" expanded="true" />
+            <element signature="e#14758#14759#0" expanded="true" />
+            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#15020#15021#0" expanded="true" />
+            <element signature="class#LoadInstructionBuffer#0" expanded="false" />
+            <element signature="e#15212#15213#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="class#AddressBuffer#0" expanded="false" />
+            <marker date="1487807415000" expanded="false" signature="4506:4905" ph="{...}" />
           </folding>
         </state>
       </provider>
