@@ -26,9 +26,11 @@ public class MIPSsim {
         AddressBuffer adb = new AddressBuffer(lib, dam);
         ArithmeticInstructionBuffer aib = new ArithmeticInstructionBuffer(inb.getIssue1DataRetriever());
         ResultBuffer reb = new ResultBuffer(adb, aib);
+        // wrap up the dependency loop!
+        rgf.setResultBuffer(reb);
 
         Steppable[] steps = {
-            inm, inb, lib, adb, aib, reb
+            rgf, inm, inb, lib, adb, aib, reb
         };
 
         OutputLiner[] outputs = {
@@ -425,13 +427,19 @@ interface RegisterRetrieveSetter {
     // sets the registers to be retrieved next step, returning true if both exist
     boolean setRetrievingRegisters(Register r1, Register r2); // returns value of register if avail, null if DNE.
 }
-class RegisterFile implements OutputLiner, RegisterRetrieveSetter, DataRetriever<SourceRegisterDataSet> {
+
+class RegisterFile implements Steppable, RegisterRetrieveSetter, DataRetriever<SourceRegisterDataSet> {
     private byte[] vals;
+    private DataRetriever<IntermediateResult> regRGF;
 
     private Register toRetrieve1;
     private Register toRetrieve2;
 
+    // nextData
+    private IntermediateResult next;
+
     public RegisterFile(String filename) throws IOException {
+        this.regRGF = regRGF;
         // init all valls to -1;
         vals = new byte[Register.values().length];
         for (int i = 0; i != vals.length; ++i) {
@@ -445,6 +453,10 @@ class RegisterFile implements OutputLiner, RegisterRetrieveSetter, DataRetriever
             byte num = Byte.parseByte(tokens[2]);
             vals[reg.getIndex()] = num;
         }
+    }
+
+    public void setResultBuffer(DataRetriever<IntermediateResult> regRGF) {
+        this.regRGF = regRGF;
     }
 
     @Override
@@ -479,6 +491,23 @@ class RegisterFile implements OutputLiner, RegisterRetrieveSetter, DataRetriever
     @Override
     public SourceRegisterDataSet getData() {
         return new SourceRegisterDataSet(vals[toRetrieve1.getIndex()], vals[toRetrieve2.getIndex()]);
+    }
+
+    @Override
+    public void fillBuffer() {
+        if (next == null) {
+            next = regRGF.getData();
+        }
+    }
+
+    @Override
+    public boolean step() {
+        if (next != null) {
+            vals[next.getDest().getIndex()] = next.getValue();
+            next = null;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -624,7 +653,7 @@ class ArithmeticInstructionBuffer extends BasicRegister<ValueInstruction, Interm
     }
 }
 
-class ResultBuffer implements Steppable  {
+class ResultBuffer implements Steppable, DataRetriever<IntermediateResult>  {
 
     // Retrievers
     DataRetriever<IntermediateResult> loadRetriever;
@@ -677,5 +706,10 @@ class ResultBuffer implements Steppable  {
             couldStep = true;
         }
         return couldStep;
+    }
+
+    @Override
+    public IntermediateResult getData() {
+        return q.poll();
     }
 }
