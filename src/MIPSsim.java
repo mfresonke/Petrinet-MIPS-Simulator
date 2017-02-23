@@ -1,8 +1,6 @@
 // Created by Max Fresonke for CD4630
 // "I have neither given nor received any unauthorized aid on this assignment"
 
-package com.maxfresonke.cda4630;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
@@ -18,8 +16,11 @@ public class MIPSsim {
     private static final String FILENAME_INPUT_DATA_MEMORY = "datamemory.txt";
     private static final String FILENAME_OUTPUT_SIMULATION = "simulation.txt";
     private static final int NUM_REGS = 8;
+    private static final boolean PRINT_DEBUG = false;
+    private static final boolean PRINT_FINAL = false;
 
     public static void main(String[] args) throws IOException {
+        // Create Components One by one, feeding each dependencies needed.
         RegisterFile rgf = new RegisterFile(FILENAME_INPUT_REGISTER);
         InstructionMemory inm = new InstructionMemory(rgf, FILENAME_INPUT_INSTRUCTIONS);
         InstructionBuffer inb = new InstructionBuffer(inm, rgf);
@@ -31,10 +32,12 @@ public class MIPSsim {
         // wrap up the dependency loop!
         rgf.setResultBuffer(reb);
 
+        // Create an array of steppables that we will actually execute
         Steppable[] steps = {
             rgf, inm, inb, lib, adb, aib, reb
         };
 
+        // Create an array from the same objects in the order that we'd like them to print
         OutputLiner[] outputs = {
             inm, inb, aib, lib, adb, reb, rgf, dam
         };
@@ -65,8 +68,16 @@ public class MIPSsim {
             if (stepsLeft) {
                 output.append("\n");
             }
+            if (PRINT_DEBUG) {
+                System.out.print(output.toString());
+            }
             ++count;
         } while (stepsLeft);
+
+        if (PRINT_FINAL) {
+            System.out.print(output.toString());
+        }
+
 
         try(PrintStream ps = new PrintStream(FILENAME_OUTPUT_SIMULATION)) { ps.print(output.toString()); }
 
@@ -446,7 +457,15 @@ class RegisterFile implements Steppable, RegisterRetrieveSetter, DataRetriever<S
         }
         // read in regs from file
         List<String> lines = Files.readAllLines(Paths.get(filename));
-        for (int i = 0; i != vals.length; ++i) {
+
+        int numToRead;
+        if (lines.get(lines.size()-1).equals("")) {
+            numToRead = lines.size()-1;
+        } else {
+            numToRead = lines.size();
+        }
+
+        for (int i = 0; i != numToRead; ++i) {
             String[] tokens = lines.get(i).split("<|,|>");
             Register reg = Register.fromString(tokens[1]);
             byte num = Byte.parseByte(tokens[2]);
