@@ -1,10 +1,14 @@
+// Created by Max Fresonke for CD4630
+// "I have neither given nor received any unauthorized aid on this assignment"
+
 package com.maxfresonke.cda4630;
 
-import javax.xml.transform.Source;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MIPSsim {
 
@@ -21,13 +25,14 @@ public class MIPSsim {
         DataMemory dam = new DataMemory(NUM_REGS, FILENAME_INPUT_DATA_MEMORY);
         AddressBuffer adb = new AddressBuffer(lib, dam);
         ArithmeticInstructionBuffer aib = new ArithmeticInstructionBuffer(inb.getIssue1DataRetriever());
+        ResultBuffer reb = new ResultBuffer(adb, aib);
 
         Steppable[] steps = {
-            inm, inb, lib, adb, aib
+            inm, inb, lib, adb, aib, reb
         };
 
         OutputLiner[] outputs = {
-            inm, inb, aib, lib, adb, rgf, dam
+            inm, inb, aib, lib, adb, reb, rgf, dam
         };
 
         StringBuilder output = new StringBuilder();
@@ -54,10 +59,12 @@ public class MIPSsim {
                 }
             }
             if (stepsLeft) {
-                output.append("\n\n");
+                output.append("\n");
             }
             ++count;
-            System.out.println(output.toString());
+            // DEBUG
+            System.out.print(output.toString());
+            // END DEBUG
             output = new StringBuilder();
         } while (stepsLeft);
 
@@ -94,14 +101,16 @@ enum Register {
     }
     public int getIndex() { return index; }
 }
-class Instruction {
+class Instruction implements Comparable<Instruction> {
 
-    private String opcode;
-    private Register dest;
-    private Register source1;
-    private Register source2;
+    private final int count;
+    private final String opcode;
+    private final Register dest;
+    private final Register source1;
+    private final Register source2;
 
-    public Instruction(String opcode, Register dest, Register source1, Register source2) {
+    public Instruction(int count, String opcode, Register dest, Register source1, Register source2) {
+        this.count = count;
         this.opcode = opcode;
         this.dest = dest;
         this.source1 = source1;
@@ -109,6 +118,7 @@ class Instruction {
     }
 
     protected Instruction(Instruction i) {
+        this.count = i.count;
         this.opcode = i.opcode;
         this.dest = i.dest;
         this.source1 = i.source1;
@@ -136,6 +146,11 @@ class Instruction {
         return "<" + getOpcode() + "," + getDest() + "," + getSource1() + "," +
                 getSource2() + ">";
     }
+
+    @Override
+    public int compareTo(Instruction o) {
+        return Integer.compare(count, o.count);
+    }
 }
 class ValueInstruction extends Instruction {
 
@@ -160,17 +175,12 @@ class ValueInstruction extends Instruction {
         sourceRegisterDataSet.getSourceReg1Data() + "," + sourceRegisterDataSet.getSourceReg2Data() + ">";
     }
 }
-class AddressDecodedInstruction {
-    private Register dest;
+class AddressDecodedInstruction extends Instruction {
     private byte addr;
 
-    public AddressDecodedInstruction(Register dest, byte addr) {
-        this.dest = dest;
+    public AddressDecodedInstruction(Instruction i, byte addr) {
+        super(i);
         this.addr = addr;
-    }
-
-    public Register getDest() {
-        return dest;
     }
 
     public byte getAddr() {
@@ -179,20 +189,15 @@ class AddressDecodedInstruction {
 
     @Override
     public String toString() {
-        return "<"+dest.toString()+","+getAddr()+">";
+        return "<"+getDest().toString()+","+getAddr()+">";
     }
 }
-class IntermediateResult {
-    private Register dest;
+class IntermediateResult extends Instruction {
     private byte value;
 
-    public IntermediateResult(Register dest, byte value) {
-        this.dest = dest;
+    public IntermediateResult(Instruction i, byte value) {
+        super(i);
         this.value = value;
-    }
-
-    public Register getDest() {
-        return dest;
     }
 
     public byte getValue() {
@@ -201,7 +206,7 @@ class IntermediateResult {
 
     @Override
     public String toString() {
-        return "<"+dest.toString()+","+value+">";
+        return "<"+getDest().toString()+","+value+">";
     }
 }
 class SourceRegisterDataSet {
@@ -295,10 +300,6 @@ abstract class BasicRegister<I, O> implements Steppable, DataRetriever<O> {
         this.inSrc = inSrc;
     }
 
-    protected I getNext() {
-        return next;
-    }
-
     protected I getCurr() {
         return curr;
     }
@@ -373,7 +374,7 @@ class InstructionMemory implements Steppable, DataRetriever<Instruction> {
             Register rdest = Register.fromString(tokens[2]);
             Register rsrc1 = Register.fromString(tokens[3]);
             Register rsrc2 = Register.fromString(tokens[4]);
-            instructions[i] = new Instruction(opcode, rdest, rsrc1, rsrc2);
+            instructions[i] = new Instruction(i, opcode, rdest, rsrc1, rsrc2);
         }
     }
 
@@ -568,7 +569,7 @@ class LoadInstructionBuffer extends BasicRegister<ValueInstruction, AddressDecod
     @Override
     protected AddressDecodedInstruction convertData() {
         return new AddressDecodedInstruction(
-                getCurr().getDest(),
+                getCurr(),
                 (byte)(getCurr().getRegister1Data() + getCurr().getRegister2Data())
         );
     }
@@ -585,7 +586,7 @@ class AddressBuffer extends BasicRegister<AddressDecodedInstruction, Intermediat
 
     @Override
     public IntermediateResult convertData() {
-        return new IntermediateResult(getCurr().getDest(), dmr.getData(getCurr().getAddr()));
+        return new IntermediateResult(getCurr(), dmr.getData(getCurr().getAddr()));
     }
 }
 
@@ -619,24 +620,62 @@ class ArithmeticInstructionBuffer extends BasicRegister<ValueInstruction, Interm
             default:
                 throw new IllegalStateException("OPCODE Not one of expected ops.");
         }
-        return new IntermediateResult(getCurr().getDest(), (byte)resultInt);
+        return new IntermediateResult(getCurr(), (byte)resultInt);
     }
 }
 
 class ResultBuffer implements Steppable  {
 
+    // Retrievers
+    DataRetriever<IntermediateResult> loadRetriever;
+    DataRetriever<IntermediateResult> aluRetriever;
+
+    // "next" stuff
+    IntermediateResult nextLoad = null;
+    IntermediateResult nextALU = null;
+
+    // current stuff
+    Queue<IntermediateResult> q = new PriorityQueue<>();
+
+    public ResultBuffer(DataRetriever<IntermediateResult> loadRetriever, DataRetriever<IntermediateResult> aluRetriever) {
+        this.loadRetriever = loadRetriever;
+        this.aluRetriever = aluRetriever;
+    }
+
     @Override
     public String getOutputLine() {
-        return null;
+        StringBuilder sb = new StringBuilder("REB:");
+
+        int count = 0;
+        for(IntermediateResult ir : q) {
+            if (count != 0) {
+                sb.append(",");
+            }
+            sb.append(ir.toString());
+            ++count;
+        }
+        return sb.toString();
     }
 
     @Override
     public void fillBuffer() {
-
+        nextLoad = loadRetriever.getData();
+        nextALU = aluRetriever.getData();
     }
 
     @Override
     public boolean step() {
-        return false;
+        boolean couldStep = false;
+        if (nextLoad != null) {
+            q.add(nextLoad);
+            nextLoad = null;
+            couldStep = true;
+        }
+        if (nextALU != null) {
+            q.add(nextALU);
+            nextALU = null;
+            couldStep = true;
+        }
+        return couldStep;
     }
 }
