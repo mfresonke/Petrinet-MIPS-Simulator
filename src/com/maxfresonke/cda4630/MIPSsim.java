@@ -4,6 +4,7 @@
 package com.maxfresonke.cda4630;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -15,6 +16,7 @@ public class MIPSsim {
     private static final String FILENAME_INPUT_INSTRUCTIONS = "instructions.txt";
     private static final String FILENAME_INPUT_REGISTER = "registers.txt";
     private static final String FILENAME_INPUT_DATA_MEMORY = "datamemory.txt";
+    private static final String FILENAME_OUTPUT_SIMULATION = "simulation.txt";
     private static final int NUM_REGS = 8;
 
     public static void main(String[] args) throws IOException {
@@ -64,12 +66,9 @@ public class MIPSsim {
                 output.append("\n");
             }
             ++count;
-            // DEBUG
-            System.out.print(output.toString());
-            // END DEBUG
-            output = new StringBuilder();
         } while (stepsLeft);
 
+        try(PrintStream ps = new PrintStream(FILENAME_OUTPUT_SIMULATION)) { ps.print(output.toString()); }
 
     }
 }
