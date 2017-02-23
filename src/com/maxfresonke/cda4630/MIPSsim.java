@@ -22,7 +22,7 @@ public class MIPSsim {
         AddressBuffer adb = new AddressBuffer(lib, dam);
 
         Steppable[] steps = {
-            inm, inb, lib, rgf, adb
+            inm, inb, lib, adb
         };
 
         OutputLiner[] outputs = {
@@ -331,16 +331,16 @@ abstract class BasicRegister<I, O> implements Steppable, DataRetriever<O> {
 }
 
 
-class InstructionMemory implements Steppable, DataRetriever<ValueInstruction> {
+class InstructionMemory implements Steppable, DataRetriever<Instruction> {
 
-    private RegisterRetriever registerRetriever;
+    private RegisterRetrieveSetter registerRetrieveSetter;
     private Instruction[] instructions;
     private int currInstruction = -1;
     private boolean canStep = false;
     private boolean canGetData = false;
 
-    public InstructionMemory(RegisterRetriever registerRetriever, String filename) throws IOException {
-        this.registerRetriever = registerRetriever;
+    public InstructionMemory(RegisterRetrieveSetter registerRetrieveSetter, String filename) throws IOException {
+        this.registerRetrieveSetter = registerRetrieveSetter;
         List<String> lines = Files.readAllLines(Paths.get(filename));
         int numInstructions;
         if (lines.get(lines.size()-1).equals("")) {
@@ -365,15 +365,12 @@ class InstructionMemory implements Steppable, DataRetriever<ValueInstruction> {
     public void fillBuffer() {
         int nextInstruction = currInstruction + 1;
         if (nextInstruction < instructions.length && nextInstruction >= 0) {
-            // retrieve the registers from the register file to ensure that we have the values to step.
-            Byte reg1 = registerRetriever.getRegister(instructions[nextInstruction].getSource1());
-            Byte reg2 = registerRetriever.getRegister(instructions[nextInstruction].getSource1());
-            if (reg1 != null && reg2 != null) {
-                canStep = true;
-                return;
-            }
+            Instruction in = instructions[nextInstruction];
+            // can step is determined if the registers exist
+            canStep = registerRetrieveSetter.setRetrievingRegisters(in.getSource1(), in.getSource2());
+        } else {
+            canStep = false;
         }
-        canStep = false;
     }
 
     @Override
@@ -387,9 +384,9 @@ class InstructionMemory implements Steppable, DataRetriever<ValueInstruction> {
         return false;
     }
 
-    public ValueInstruction getData() {
+    public Instruction getData() {
         if (canGetData && currInstruction >= 0 && currInstruction < instructions.length) {
-            return new ValueInstruction(instructions[currInstruction];
+            return instructions[currInstruction];
         }
         return null;
     }
@@ -407,11 +404,15 @@ class InstructionMemory implements Steppable, DataRetriever<ValueInstruction> {
     }
 }
 
-interface RegisterRetriever {
-    Byte getRegister(Register reg); // returns value of register if avail, null if DNE.
+interface RegisterRetrieveSetter {
+    // sets the registers to be retrieved next step, returning true if both exist
+    boolean setRetrievingRegisters(Register r1, Register r2); // returns value of register if avail, null if DNE.
 }
-class RegisterFile implements OutputLiner, RegisterRetriever{
+class RegisterFile implements OutputLiner, RegisterRetrieveSetter, DataRetriever<SourceRegisterDataSet> {
     private byte[] vals;
+
+    private Register toRetrieve1;
+    private Register toRetrieve2;
 
     public RegisterFile(String filename) throws IOException {
         // init all valls to -1;
@@ -450,13 +451,17 @@ class RegisterFile implements OutputLiner, RegisterRetriever{
         return sb.toString();
     }
 
+
     @Override
-    public Byte getRegister(Register reg) {
-        byte val = vals[reg.getIndex()];
-        if (val == -1) {
-            return null;
-        }
-        return val;
+    public boolean setRetrievingRegisters(Register r1, Register r2) {
+        toRetrieve1 = r1;
+        toRetrieve2 = r2;
+        return vals[r1.getIndex()] != -1 && vals[r2.getIndex()] != -1;
+    }
+
+    @Override
+    public SourceRegisterDataSet getData() {
+        return new SourceRegisterDataSet(vals[toRetrieve1.getIndex()], vals[toRetrieve2.getIndex()]);
     }
 }
 
