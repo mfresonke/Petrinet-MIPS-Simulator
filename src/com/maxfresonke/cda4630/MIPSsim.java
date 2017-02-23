@@ -20,13 +20,14 @@ public class MIPSsim {
         LoadInstructionBuffer lib = new LoadInstructionBuffer(inb.getIssue2DataRetriever());
         DataMemory dam = new DataMemory(NUM_REGS, FILENAME_INPUT_DATA_MEMORY);
         AddressBuffer adb = new AddressBuffer(lib, dam);
+        ArithmeticInstructionBuffer aib = new ArithmeticInstructionBuffer(inb.getIssue1DataRetriever());
 
         Steppable[] steps = {
-            inm, inb, lib, adb
+            inm, inb, lib, adb, aib
         };
 
         OutputLiner[] outputs = {
-            inm, inb, lib, adb, rgf, dam
+            inm, inb, aib, lib, adb, rgf, dam
         };
 
         StringBuilder output = new StringBuilder();
@@ -328,8 +329,23 @@ abstract class BasicRegister<I, O> implements Steppable, DataRetriever<O> {
         }
         return prefix+":"+curr.toString();
     }
+
+    @Override
+    public O getData() {
+        if (getCurr() == null) {
+            return null;
+        }
+        O out = convertData();
+        clearCurr();
+        return out;
+    }
+
+    // you can implement convertData and just assume getCurr() is not null
+    // and not have to worry about clearing the current value
+    protected abstract O convertData();
 }
 
+/* Primary Petri Components */
 
 class InstructionMemory implements Steppable, DataRetriever<Instruction> {
 
@@ -524,7 +540,9 @@ class InstructionBuffer implements Steppable {
         return new DataRetriever<ValueInstruction>() {
             @Override
             public ValueInstruction getData() {
-                return issue1Data;
+                ValueInstruction data = issue1Data;
+                issue1Data = null;
+                return data;
             }
         };
     }
@@ -533,7 +551,9 @@ class InstructionBuffer implements Steppable {
         return new DataRetriever<ValueInstruction>() {
             @Override
             public ValueInstruction getData() {
-                return issue2Data;
+                ValueInstruction data = issue2Data;
+                issue2Data = null;
+                return data;
             }
         };
     }
@@ -546,17 +566,11 @@ class LoadInstructionBuffer extends BasicRegister<ValueInstruction, AddressDecod
     }
 
     @Override
-    public AddressDecodedInstruction getData() {
-        if (getCurr() == null) {
-            return null;
-        }
-        AddressDecodedInstruction adi = new AddressDecodedInstruction(
+    protected AddressDecodedInstruction convertData() {
+        return new AddressDecodedInstruction(
                 getCurr().getDest(),
                 (byte)(getCurr().getRegister1Data() + getCurr().getRegister2Data())
         );
-        // clear out the token when completed
-        clearCurr();
-        return adi;
     }
 }
 
@@ -570,7 +584,59 @@ class AddressBuffer extends BasicRegister<AddressDecodedInstruction, Intermediat
     }
 
     @Override
-    public IntermediateResult getData() {
+    public IntermediateResult convertData() {
         return new IntermediateResult(getCurr().getDest(), dmr.getData(getCurr().getAddr()));
+    }
+}
+
+class ArithmeticInstructionBuffer extends BasicRegister<ValueInstruction, IntermediateResult> {
+
+    public ArithmeticInstructionBuffer(DataRetriever<ValueInstruction> inSrc) {
+        super("AIB", inSrc);
+    }
+
+    @Override
+    public IntermediateResult convertData() {
+        final byte val1 = getCurr().getRegister1Data();
+        final byte val2 = getCurr().getRegister2Data();
+        int resultInt;
+        switch (getCurr().getOpcode()) {
+            case "ADD":
+                resultInt = val1 + val2;
+                break;
+
+            case "SUB":
+                resultInt = val1 - val2;
+                break;
+
+            case "AND":
+                resultInt = val1 & val2;
+                break;
+
+            case "OR":
+                resultInt = val1 | val2;
+                break;
+            default:
+                throw new IllegalStateException("OPCODE Not one of expected ops.");
+        }
+        return new IntermediateResult(getCurr().getDest(), (byte)resultInt);
+    }
+}
+
+class ResultBuffer implements Steppable  {
+
+    @Override
+    public String getOutputLine() {
+        return null;
+    }
+
+    @Override
+    public void fillBuffer() {
+
+    }
+
+    @Override
+    public boolean step() {
+        return false;
     }
 }
