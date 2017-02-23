@@ -276,8 +276,12 @@ class DataMemory implements OutputLiner, DataMemoryRetriever {
 
     public String getOutputLine() {
         StringBuilder sb = new StringBuilder("DAM:");
+        int count = 0;
         for (int i = 0; i < mem.length; ++i) {
-            if (i != 0) {
+            if (mem[i] == -1) {
+                continue;
+            }
+            if (count != 0) {
                 sb.append(",");
             }
             sb.append("<");
@@ -285,6 +289,7 @@ class DataMemory implements OutputLiner, DataMemoryRetriever {
             sb.append(",");
             sb.append(mem[i]);
             sb.append(">");
+            ++count;
         }
         return sb.toString();
     }
